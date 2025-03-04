@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://dcyka5e06knff"]
+
+[ext_resource type="Theme" uid="uid://btp6jnerr56p3" path="res://TitleScreen/menu.tres" id="1_gcdyw"]
+[ext_resource type="Script" path="res://TitleScreen/menu.gd" id="1_oi0p3"]
+[ext_resource type="FontFile" uid="uid://cb4e8g30xxp5u" path="res://Font/tenderness.otf" id="1_xdjxl"]
+[ext_resource type="PackedScene" uid="uid://b7c7gsdx2rkjm" path="res://Utility/basic_button.tscn" id="3_kwsdd"]
+[ext_resource type="PackedScene" uid="uid://cn7a5wvxrh15h" path="res://Utility/tile.tscn" id="3_vqp1y"]
+[ext_resource type="Script" path="res://Utility/tile.gd" id="4_fdxed"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_gcdyw")
+script = ExtResource("1_oi0p3")
+
+[node name="Tile" parent="." instance=ExtResource("3_vqp1y")]
+script = ExtResource("4_fdxed")
+
+[node name="Label" type="Label" parent="."]
+z_index = 5
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 100.0
+theme_override_fonts/font = ExtResource("1_xdjxl")
+theme_override_font_sizes/font_size = 72
+text = "Survival"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 639.0
+offset_bottom = 358.0
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 200
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="btn_play" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_kwsdd")]
+z_index = 4
+layout_mode = 2
+text = "Play"
+
+[node name="btn_exit" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_kwsdd")]
+z_index = 4
+layout_mode = 2
+text = "Exit"
+
+[connection signal="click_end" from="MarginContainer/VBoxContainer/btn_play" to="." method="_on_btn_play_click_end"]
+[connection signal="click_end" from="MarginContainer/VBoxContainer/btn_exit" to="." method="_on_btn_exit_click_end"]

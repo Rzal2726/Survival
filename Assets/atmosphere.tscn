@@ -1,0 +1,76 @@
+[gd_scene load_steps=5 format=3 uid="uid://b44hxn6tmei85"]
+
+[sub_resource type="Gradient" id="Gradient_ooda8"]
+offsets = PackedFloat32Array(0, 0.00869565, 0.0173913, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.956522, 0.956522, 0.956522, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yhn2q"]
+gradient = SubResource("Gradient_ooda8")
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.496933, 0.493865)
+fill_to = Vector2(0.98773, 0.358896)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h8s1j"]
+size = Vector2(55.2917, 23.5243)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_4p5no"]
+polygon = PackedVector2Array(-5.36187, -12.339, 20.2465, -6.93402, 40.1397, 18.703, -0.324493, 7.27289)
+
+[node name="Atmosphere" type="Area2D"]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(152, -377)
+scale = Vector2(12.7911, 12.8344)
+color = Color(0.718705, 0.626254, 0.018013, 1)
+shadow_enabled = true
+shadow_filter = 2
+shadow_item_cull_mask = 3
+texture = SubResource("GradientTexture2D_yhn2q")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(9.79723, -188.549)
+rotation = -0.322886
+shape = SubResource("RectangleShape2D_h8s1j")
+disabled = true
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="CollisionShape2D2"]
+position = Vector2(-22.1144, -2.602)
+occluder = SubResource("OccluderPolygon2D_4p5no")
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="CollisionShape2D2"]
+position = Vector2(-89.1101, -41.8903)
+occluder = SubResource("OccluderPolygon2D_4p5no")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(70.485, -186.926)
+rotation = -0.322886
+shape = SubResource("RectangleShape2D_h8s1j")
+disabled = true
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="CollisionShape2D3"]
+position = Vector2(-7.08206, 3.87981)
+occluder = SubResource("OccluderPolygon2D_4p5no")
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="CollisionShape2D3"]
+position = Vector2(58.6696, 24.8255)
+occluder = SubResource("OccluderPolygon2D_4p5no")
+
+[node name="LightOccluder2D3" type="LightOccluder2D" parent="CollisionShape2D3"]
+position = Vector2(112.731, 36.5873)
+occluder = SubResource("OccluderPolygon2D_4p5no")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(-298, -167)
+local_coords = true
+emission_shape = 1
+emission_sphere_radius = 8.66
+direction = Vector2(100, 0)
+spread = 93.65
+gravity = Vector2(7, 7)
+initial_velocity_max = 920.92
+angular_velocity_max = 720.0
+angle_max = 408.6
+scale_amount_max = 5.0
+color = Color(0.478629, 0.693763, 0, 1)
+anim_speed_max = 41.51

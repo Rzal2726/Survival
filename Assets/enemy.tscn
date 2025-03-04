@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://237muqow20dc"]
+
+[ext_resource type="Script" path="res://Assets/enemy.gd" id="1_2o3ix"]
+[ext_resource type="Texture2D" uid="uid://dbu2gnwlf8kis" path="res://Assets/Basic Asset Pack/Basic Monster Animations/Ochre Jelly/OchreJelly.png" id="2_bshn1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sgqwm"]
+radius = 8.48528
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kyj2i"]
+atlas = ExtResource("2_bshn1")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1kuv0"]
+atlas = ExtResource("2_bshn1")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_usy5j"]
+atlas = ExtResource("2_bshn1")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bwns3"]
+atlas = ExtResource("2_bshn1")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jvwn5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kyj2i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1kuv0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_usy5j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bwns3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="enemy" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_2o3ix")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_sgqwm")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_postprocessing = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jvwn5")
